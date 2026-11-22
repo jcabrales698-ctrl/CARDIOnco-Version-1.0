@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0.0",
+  "modelId": "AVM-ANTRACICLINAS-HOLGUIN",
+  "version": "0.2.0-DEMO-SIMULADO",
+  "fecha": "2026-11-22",
+  "status": "demo_simulado",
+  "statusNote": "SIMULACIÓN DIDÁCTICA: coeficientes y supervivencia basal sintéticos, creados exclusivamente para probar la calculadora. No proceden de la cohorte ni de un análisis estadístico real; no representan riesgo clínico.",
+  "horizonteMeses": 24,
+  "baselineSurvival24": 0.97,
+  "lpCentrado": 0.0,
+  "riskMethod": "cox",
+  "predictores": [
+    {
+      "id": "edad65",
+      "nombre": "Edad ≥65 años",
+      "dominio": "Clínico",
+      "tipo": "binario",
+      "corte": 65,
+      "beta": 0.35,
+      "puntos": 1,
+      "adverso": "gte"
+    },
+    {
+      "id": "hta",
+      "nombre": "Hipertensión arterial",
+      "dominio": "Clínico",
+      "tipo": "binario",
+      "corte": true,
+      "beta": 0.28,
+      "puntos": 1,
+      "adverso": "true"
+    },
+    {
+      "id": "dm",
+      "nombre": "Diabetes mellitus",
+      "dominio": "Clínico",
+      "tipo": "binario",
+      "corte": true,
+      "beta": 0.32,
+      "puntos": 1,
+      "adverso": "true"
+    },
+    {
+      "id": "dosis240",
+      "nombre": "Dosis acumulada ≥240 mg/m²",
+      "dominio": "Tratamiento",
+      "tipo": "binario",
+      "corte": 240,
+      "beta": 0.48,
+      "puntos": 2,
+      "adverso": "gte",
+      "dinamico": true
+    },
+    {
+      "id": "qtd50",
+      "nombre": "Dispersión del QT >50 ms",
+      "dominio": "ECG",
+      "tipo": "binario",
+      "corte": 50,
+      "beta": 0.55,
+      "puntos": 2,
+      "adverso": "gt"
+    },
+    {
+      "id": "tpe100",
+      "nombre": "Tp-Te >100 ms",
+      "dominio": "ECG",
+      "tipo": "binario",
+      "corte": 100,
+      "beta": 0.62,
+      "puntos": 2,
+      "adverso": "gt"
+    },
+    {
+      "id": "fevi50",
+      "nombre": "FEVI <50 %",
+      "dominio": "Ecocardiograma",
+      "tipo": "binario",
+      "corte": 50,
+      "beta": 0.75,
+      "puntos": 3,
+      "adverso": "lt",
+      "dinamico": true
+    },
+    {
+      "id": "rwt042",
+      "nombre": "RWT ≤0,42",
+      "dominio": "Ecocardiograma",
+      "tipo": "binario",
+      "corte": 0.42,
+      "beta": 0.18,
+      "puntos": 1,
+      "adverso": "lte"
+    }
+  ],
+  "tablaPuntosRiesgo": null,
+  "categorias": [
+    {
+      "id": "bajo",
+      "min": 0,
+      "max": 4,
+      "label": "Bajo (simulado)",
+      "color": "#2FB8B0"
+    },
+    {
+      "id": "moderado",
+      "min": 4,
+      "max": 8,
+      "label": "Moderado (simulado)",
+      "color": "#E7B65C"
+    },
+    {
+      "id": "alto",
+      "min": 8,
+      "max": 15,
+      "label": "Alto (simulado)",
+      "color": "#E8A5A5"
+    },
+    {
+      "id": "muy_alto",
+      "min": 15,
+      "max": 100,
+      "label": "Muy alto (simulado)",
+      "color": "#D9534F"
+    }
+  ],
+  "dosisEquivalentes": {
+    "doxorrubicina": 1.0,
+    "epirrubicina": 0.8,
+    "referencia": "ESC 2022 Guidelines on cardio-oncology, Table 5: CV toxicity dose ratio; epirubicin ×0.8 to doxorubicin-equivalent dose. Ratios for other agents are listed in the guideline and should only be added if used by the cohort protocol."
+  },
+  "referencia": "Pérez Guerrero JL. Modelo pronóstico de arritmias ventriculares malignas en pacientes con cáncer de mama tratadas con antraciclinas. Tesis doctoral. Universidad de Ciencias Médicas de Holguín; 2026. Capítulos I-II."
+}
